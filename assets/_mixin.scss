@@ -1,0 +1,48 @@
+@mixin coverbg {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-size: cover !important;
+}
+
+@mixin placeholder($color,$font_size, $font_weight, $font) {
+  &::-webkit-input-placeholder {
+    color: $color;
+    font-size: $font_size;
+    font-weight: $font_weight;
+    font-family: $font;
+  }
+  &::-moz-placeholder { 
+    color: $color;
+    font-size: $font_size;
+    font-weight: $font_weight;
+    font-family: $font;
+  }
+  &:-ms-input-placeholder { 
+    color: $color;
+    font-size: $font_size;
+    font-weight: $font_weight;
+    font-family: $font;
+  }
+  &:-moz-placeholder { 
+    color: $color;
+    font-size: $font_size;
+    font-weight: $font_weight;
+    font-family: $font;
+  }
+}
+
+
+$rem-base-font: 16px;
+@function rem($px, $base: $base-font-size) {
+    @return ($px / $base) * 1em;
+}
+
+
+@mixin rem($font-size, $spacing, $line-height: 0) {
+  font-size: ($font-size / $rem-base-font) * 1rem;
+  line-height: ($line-height / $font-size) * 1;
+  letter-spacing: ($spacing / 1000) * 1em;
+}
