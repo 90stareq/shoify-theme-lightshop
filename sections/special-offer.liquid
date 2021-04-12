@@ -1,0 +1,130 @@
+    <!--  Begin discount section -->
+    <section class="discount-offer">
+        <div class="container">
+            <div class="row d-flex align-items-center">
+                <div class="col-lg-6 col-md-12">
+                    <div class="content">
+                        <h3>{{ section.settings.title }}</h3>
+                        <div class="special-offer"></div>
+                        <p>{{ section.settings.description }}</p>
+                        <a
+                            href="#" class="btn btn-primary">
+                            {{ section.settings.button_text }}
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="media">
+                        {% if section.settings.offer_image %}
+                            <img src="
+                                {{ section.settings.offer_image | img_url: 'large' }}" class="img-responsive">
+
+                                {% else %}
+
+                                {{ 'image' | placeholder_svg_tag }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- /end of discount offer -->
+
+
+    <script>
+        (function ($) {
+            "use strict";
+            /* countdown init js ===============*/
+            $(".special-offer").ClassyCountdown({
+                theme: "white",
+                end: $.now() + 120,
+                labels: false,
+                _setlabels: true,
+                style: {
+                element: "",
+                textResponsive: 0.5,
+                days: {
+                    gauge: {
+                    thickness: 0.1,
+                    bgColor: "rgba(255,255,255,0.05)",
+                    fgColor: "#44F2D2",
+                    },
+                    textCSS:
+                    "font-family:'Open Sans'; font-size:25px; font-weight:300; color:#fff;",
+                },
+                hours: {
+                    gauge: {
+                    thickness: 0.1,
+                    bgColor: "rgba(255,255,255,0.05)",
+                    fgColor: "#44F2D2",
+                    },
+                    textCSS:
+                    "font-family:'Open Sans'; font-size:25px; font-weight:300; color:#fff;",
+                },
+                minutes: {
+                    gauge: {
+                    thickness: 0.1,
+                    bgColor: "rgba(255,255,255,0.05)",
+                    fgColor: "#44F2D2",
+                    },
+                    textCSS:
+                    "font-family:'Open Sans'; font-size:25px; font-weight:300; color:#fff;",
+                },
+                seconds: {
+                    gauge: {
+                    thickness: 0.1,
+                    bgColor: "rgba(255,255,255,0.05)",
+                    fgColor: "#44F2D2",
+                    },
+                    textCSS:
+                    "font-family:'Open Sans'; font-size:25px; font-weight:300; color:#fff;",
+                },
+                },
+                onEndCallback: function () {
+                console.log("Time out!");
+                },
+            });
+
+        })(jQuery);
+    </script>
+
+    {% schema %}
+    {
+        "name": "Special Offer",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "Special Offer"
+            },
+            {
+                "type": "text",
+                "id": "days",
+                "label": "Remaining Days",
+                "default":"30"
+            },
+            {
+                "type": "text",
+                "id": "minutes",
+                "label": "Remaining Minutes",
+                "default": "30"
+            },
+            {
+                "type": "richtext",
+                "id": "description",
+                "label": "Description"
+            },
+            {
+                "type": "text",
+                "id": "button_text",
+                "label": "Button Text",
+                "default": "Shop Now"
+            },
+            {
+                "type": "image_picker",
+                "id": "offer_image",
+                "label": "Offer Image"
+              }
+        ]
+    }
+    {% endschema %}

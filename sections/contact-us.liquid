@@ -1,0 +1,84 @@
+<section class="contact-us">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-4 col-lg-6 col-md-12">
+                <div id="map"></div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-12">
+                <div class="contact">
+                    <a href="#" class="location"><i class="fas fa-map-marker-alt"></i></a>
+  
+                    <div class="address">
+                        <h3>Address</h3>
+                        <p>{{ section.settings.address }}</p>
+                    </div>
+                    <div class="emails">
+                        <h3>Email</h3>
+                        <a href="mailto:{{ section.settings.contactemail }}.com">{{ section.settings.contactemail }}</a>
+                        <a href="mailto:{{ section.settings.supportemail }}">{{ section.settings.supportemail }}</a>
+                    </div>
+                    <div class="mobile">
+                        <h3>Mobile</h3>
+                        <a href="tel:{{ section.settings.hotline }}"> {{ section.settings.hotline }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-6 col-md-12">
+                <div class="form-wraper">
+                    <a href="#" class="mail"><i class="fas fa-envelope"></i></a>
+                    <h3>Drop Us A Line</h3>
+  
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="Email" placeholder="johndoe@gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea name="message" class="form-control" placeholder="Your comment. . . ." rows="6"></textarea>
+                        </div>
+                        <button class="success-button">Submit</button>
+                    </form>
+                </div>    
+            </div>
+        </div>
+    </div>
+  </section>
+
+  
+  {% schema %}
+    {
+        "name": "Contact us",
+        "settings": [
+            {
+                "type": "text",
+                "id": "address",
+                "label": "Address",
+                "default": "Your address"
+            },
+            {
+                "type": "text",
+                "id": "supportemail",
+                "label": "Support email",
+                "default": "support email"
+            },
+            {
+                "type": "text",
+                "id": "contactemail",
+                "label": "Contact email",
+                "default": "contact email"
+            },
+            {
+                "type": "text",
+                "id": "hotline",
+                "label": "Hotline",
+                "default": "mobile number"
+            }
+        ]
+    }
+
+  {% endschema %}

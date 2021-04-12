@@ -1,0 +1,61 @@
+<div class="col-xl-7 col-lg-12">
+    <div class="row remove-child">
+
+        {% for obj in blockSettings %}
+            {% assign product_item = all_products[blockSettings[obj]] %}
+            <div class="col-lg-4 col-md-6">
+                <div class="single-product">
+                    <div class="media">
+                        {% if product_item.featured_image %}
+                            <img
+                                src="{{ product_item.featured_image | img_url : 'large' }}"
+                                alt="{{ product_item.title }}" class="img-responsive">
+                            {% else %}
+                            {{ 'image' | placeholder_svg_tag }}
+                        {% endif %}
+                        
+                    </div>
+                    <div class="content">
+                        <label>{{ productTag }}</label>
+                        <h6>
+                            <a href="{{ product_item.url }}">
+                                {{ product_item.title }}
+                            </a>
+                        </h6>
+                        <p class="currency">{{ product_item.price | money }}</span></p>
+    
+                        <a
+                            type="button"
+                            onclick="addToCart({{ product_item.variants[0].id }})"
+                            >
+                                <i class="fas fa-shopping-basket"></i>
+                            </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    
+    </div>
+</div>
+
+<script>
+    const addToCart = (id) => {
+        let formData = {
+            'items': [{
+            'id': id,
+            'quantity': 1
+            }]
+            };
+
+            fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+            })
+            .catch((error) => {
+            console.error('Error found:', error);
+            });
+    }
+</script>
